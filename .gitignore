@@ -1,0 +1,25 @@
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+auth-service/app
+
+# Build folders
+build/
+dist/
+
+# Environment files
+.env
+.env.*
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# Docker
+docker-compose.override.yml

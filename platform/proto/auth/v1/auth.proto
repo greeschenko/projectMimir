@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package auth.v1;
+
+option go_package = "platform/proto/auth/v1;authv1";
+
+service AuthService {
+  rpc Register (RegisterRequest) returns (AuthResponse);
+  rpc Login (LoginRequest) returns (AuthResponse);
+  rpc Refresh (RefreshRequest) returns (AuthResponse);
+  rpc ValidateToken (ValidateTokenRequest) returns (ValidateTokenResponse);
+}
+
+message RegisterRequest {
+  string email = 1;
+  string password = 2;
+}
+
+message LoginRequest {
+  string email = 1;
+  string password = 2;
+}
+
+message RefreshRequest {
+  string refresh_token = 1;
+}
+
+message ValidateTokenRequest {
+  string access_token = 1;
+}
+
+message ValidateTokenResponse {
+  string user_id = 1;
+  string email = 2;
+  string role = 3;
+}
+
+message AuthResponse {
+  string access_token = 1;
+  string refresh_token = 2;
+  User user = 3;
+}
+
+message User {
+  string id = 1;
+  string email = 2;
+  string role = 3;
+}
+
+
